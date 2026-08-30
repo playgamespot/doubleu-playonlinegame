@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Congratulations! DoubleU Casino Playgame</title>
+
+    <link rel="icon" type="image/png" href="assets/img/app_images/favicon1.png">
+
+    <style>
+        /* ==========================================================================
+           RESET & BASE STYLES
+           ========================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b1120;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        /* ==========================================================================
+           HERO SECTION
+           ========================================================================== */
+        .hero {
+            height: 420px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("assets/img/app_images/header1.jpeg") center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.7);
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.7);
+        }
+
+        .cta {
+            background: #ffd700;
+            color: #000;
+            padding: 14px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .cta:hover {
+            background: #e6c200;
+            transform: scale(1.02);
+        }
+
+        /* ==========================================================================
+           TIMER & UTILITIES
+           ========================================================================== */
+        .timer {
+            text-align: center;
+            font-size: 28px;
+            margin-top: 20px;
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+       /* CONTAINER */
+
+/* REWARD GRID & CARDS - Responsive & Glassmorphism */
+.grid {
+    display: grid;
+    /* auto-fit handles the desktop layout, minmax ensures cards don't get too skinny */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.card {
+    background: rgba(30, 41, 59, 0.9);
+    backdrop-filter: blur(8px); /* Adds a modern frosted glass look */
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, background 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensures all cards in a row are the same height */
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    background: rgba(30, 41, 59, 1);
+    border-color: rgba(255, 215, 0, 0.4); /* Subtle gold glow on hover */
+}
+
+.card img {
+    width: 100%;
+    /* Replaced fixed 250px with aspect-ratio for better mobile scaling */
+    aspect-ratio: 16 / 9; 
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    color: #ffd700;
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+.card p {
+    margin-bottom: 20px;
+    flex-grow: 1; /* Pushes the button to the bottom if text length varies */
+}
+
+.btn {
+    display: inline-block;
+    width: 120%;
+    max-width: 280px; /* Prevents the button from becoming too wide on desktop */
+    margin: 10px auto 0;
+    padding: 14px 25px;
+    background: #22c55e;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.btn:hover {
+    background: #16a34a;
+    transform: scale(1.02);
+}
+
+/* MOBILE SPECIFIC ADJUSTMENTS */
+@media (max-width: 600px) {
+    .grid {
+        /* On small phones, use a single column */
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .card {
+        padding: 20px;
+    }
+
+    .card h3 {
+        font-size: 1.25rem;
+    }
+}
+
+/* Specific Mobile Adjustment */
+@media (max-width: 480px) {
+    .grid {
+        grid-template-columns: 1fr; /* Forces single column on small phones */
+    }
+    .card {
+        padding: 15px;
+    }
+    .hero h1 {
+        font-size: 28px; /* Shrinks title so it doesn't wrap weirdly */
+    }
+}
+
+
+        /* ==========================================================================
+           STEPS & REVIEWS
+           ========================================================================== */
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 200px;
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .step h3 {
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        .review {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border-left: 4px solid #ffd700;
+        }
+
+        /* ==========================================================================
+           FAQ & FOOTER
+           ========================================================================== */
+        .faq {
+            margin-top: 30px;
+        }
+
+        .faq h3 {
+            margin-bottom: 5px;
+            color: #ffd700;
+        }
+
+        footer {
+            background: #020617;
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        /* ==========================================================================
+           RESPONSIVE DESIGN (MEDIA QUERIES)
+           ========================================================================== */
+        @media (max-width: 600px) {
+            .card {
+                padding: 20px;
+                max-width: 100%; 
+            }
+            .card h3 {
+                font-size: 1.3rem;
+            }
+            /* Maximizes image size on small cellphone screens */
+            .card-img-wrapper {
+                width: 100%;
+                max-width: 100%;    /* Allows image to stretch full-width relative to the mobile display */
+                height: 240px;      /* Proportionate height for mobile devices */
+                border-radius: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+            .card {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <h1>DOUBLEU CASINO FREECHIPS</h1>
+        <p>Claim Daily Free Chips & Free Spins</p>
+        <a class="cta" href="https://magadownloads.com/1184543">Get Free Chips</a>
+    </section>
+
+    <div class="container">
+        <h2 class="section-title">⏳ Next Free Chips Drop</h2>
+        <div class="timer" id="timer">Loading...</div>
+    </div>
+
+    <section class="container" id="chips">
+        <h2 style="text-align:center;">🔥 Today's Free Chips!</h2>
+        <div class="grid">
+        <div class="card">
+            <img src="assets/img/app_images/image1.png" alt="image1">
+        <h3>100,000,000 Chips</h3>
+        <p>Special free bonus chips</p>
+        <a href="https://magadownloads.com/1184537" class="btn">Claim Now</a>
+        </div>
+        
+        
+        <div class="card">
+            <img src="assets/img/app_images/image2.png" alt="image2">
+        <h3>Free Spins</h3>
+        <p>Extra slot spins</p>
+        <a href="https://magadownloads.com/1184537" class="btn">Claim Now</a>
+        
+        </div>
+        
+        </div>
+        
+        </section>
+
+    <section class="container">
+        <h2 class="section-title">📲 How To Claim</h2>
+        <div class="steps">
+            <div class="step">
+                <h3>1️⃣ Click Claim Now</h3>
+                <p>Tap the green button on the reward card above.</p>
+            </div>
+            <div class="step">
+                <h3>2️⃣ Verification</h3>
+                <p>Complete the quick offer to verify you're not a robot.</p>
+            </div>
+            <div class="step">
+                <h3>3️⃣ Receive Chips</h3>
+                <p>Chips will be credited to your game account instantly.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2 class="section-title">⭐ Player Reviews</h2>
+        <div class="review">
+            <p>"I collect free chips here every day for DoubleU Casino!"</p>
+            <strong>- Jason P.</strong>
+        </div>
+        <div class="review">
+            <p>"Great site for daily DUC rewards."</p>
+            <strong>- Maria S.</strong>
+        </div>
+        <div class="review">
+            <p>"I love this game. Thanks for the rewards."</p>
+            <strong>- Jane Scotty.</strong>
+        </div>
+    </section>
+
+    <section class="container faq">
+        <h2 class="section-title">❓ FAQ</h2>
+        <h3>Are these chips really free?</h3>
+        <p>Yes. These links come from official social promotions.</p>
+        <h3>How often are rewards updated?</h3>
+        <p>Usually every day.</p>
+        <h3>Do links expire?</h3>
+        <p>Yes, most rewards expire within 24 hours.</p>
+    </section>
+
+    <footer>
+        <p>Disclaimer: This website is not affiliated with another Casino. All trademarks belong to their respective owners.</p>
+    </footer>
+
+
+
+    <script>
+        // 1. COUNTDOWN TIMER SCRIPT
+        var countDownDate = new Date().getTime() + 3600000;
+        var x = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById("timer").innerHTML = minutes + "m " + seconds + "s";
+            
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("timer").innerHTML = "New Chips Available!";
+            }
+        }, 1000);
+
+        // 2. PAGE SECURITY (DISABLE SELECTION / INJECTION SHORTCUTS)
+        document.addEventListener("contextmenu", function(e) { e.preventDefault(); });
+        document.addEventListener("selectstart", function(e) { e.preventDefault(); });
+        document.addEventListener("copy", function(e) { e.preventDefault(); });
+        
+        document.addEventListener("keydown", function(e) {
+            if (e.ctrlKey && ["u", "c", "s", "i"].includes(e.key.toLowerCase())) {
+                e.preventDefault();
+            }
+            if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i") {
+                e.preventDefault();
+            }
+            if (e.key === "F12") {
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
